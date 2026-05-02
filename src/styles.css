@@ -1,0 +1,209 @@
+/* ===== CSS Custom Properties (Design Tokens) ===== */
+:root {
+  /* Primary */
+  --purple: #635FC7;
+  --purple-hover: #A8A4FF;
+
+  /* Destructive */
+  --red: #EA5555;
+  --red-hover: #FF9898;
+
+  /* Dark Theme (default) */
+  --bg-main: #20212C;
+  --bg-sidebar: #2B2C37;
+  --bg-card: #2B2C37;
+  --lines: #3E3F4E;
+  --text-primary: #FFFFFF;
+  --text-secondary: #828FA3;
+  --bg-input: #2B2C37;
+  --bg-subtask: #20212C;
+  --bg-toggle: #20212C;
+  --scrollbar-thumb: #3E3F4E;
+
+  /* Typography */
+  --font-family: 'Plus Jakarta Sans', sans-serif;
+  --fs-xl: 24px;
+  --fs-lg: 18px;
+  --fs-md: 15px;
+  --fs-sm: 13px;
+  --fs-xs: 12px;
+  --fw-bold: 700;
+  --fw-medium: 500;
+
+  /* Spacing */
+  --sidebar-width: 300px;
+  --header-height: 97px;
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+}
+
+/* Light Theme */
+[data-theme="light"] {
+  --bg-main: #F4F7FD;
+  --bg-sidebar: #FFFFFF;
+  --bg-card: #FFFFFF;
+  --lines: #E4EBFA;
+  --text-primary: #000112;
+  --text-secondary: #828FA3;
+  --bg-input: #FFFFFF;
+  --bg-subtask: #F4F7FD;
+  --bg-toggle: #F4F7FD;
+  --scrollbar-thumb: #E4EBFA;
+}
+
+/* ===== Global Reset & Base Styles ===== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-family);
+  font-weight: var(--fw-medium);
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow: hidden;
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+h1, h2, h3, h4 {
+  font-weight: var(--fw-bold);
+}
+
+h1 {
+  font-size: var(--fs-xl);
+  line-height: 30px;
+}
+
+h2 {
+  font-size: var(--fs-lg);
+  line-height: 23px;
+}
+
+h3 {
+  font-size: var(--fs-md);
+  line-height: 19px;
+}
+
+h4 {
+  font-size: var(--fs-xs);
+  line-height: 15px;
+  letter-spacing: 2.4px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+p {
+  font-size: var(--fs-sm);
+  line-height: 23px;
+  color: var(--text-secondary);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  font-family: var(--font-family);
+  font-weight: var(--fw-bold);
+  transition: background-color var(--transition-fast);
+}
+
+input, textarea, select {
+  font-family: var(--font-family);
+  font-size: var(--fs-sm);
+  outline: none;
+  border: 1px solid rgba(130, 143, 163, 0.25);
+  border-radius: 4px;
+  padding: 8px 16px;
+  background-color: var(--bg-input);
+  color: var(--text-primary);
+  transition: border-color var(--transition-fast);
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--purple);
+}
+
+/* ===== Utility Classes ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  border-radius: 24px;
+  font-size: var(--fs-sm);
+  padding: 15px 24px;
+  transition: background-color var(--transition-fast);
+}
+
+.btn--primary {
+  background-color: var(--purple);
+  color: #FFFFFF;
+}
+
+.btn--primary:hover {
+  background-color: var(--purple-hover);
+}
+
+.btn--secondary {
+  background-color: rgba(99, 95, 199, 0.1);
+  color: var(--purple);
+}
+
+[data-theme="light"] .btn--secondary {
+  background-color: rgba(99, 95, 199, 0.1);
+}
+
+.btn--secondary:hover {
+  background-color: rgba(99, 95, 199, 0.25);
+}
+
+.btn--destructive {
+  background-color: var(--red);
+  color: #FFFFFF;
+}
+
+.btn--destructive:hover {
+  background-color: var(--red-hover);
+}
+
+.btn--large {
+  font-size: var(--fs-md);
+  padding: 15px 30px;
+}
+
+/* ===== Scrollbar Styling ===== */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}

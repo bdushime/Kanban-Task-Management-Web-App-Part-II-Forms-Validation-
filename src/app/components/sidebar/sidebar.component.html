@@ -1,0 +1,40 @@
+<aside class="sidebar">
+  <div class="sidebar__logo">
+    <img src="assets/logo-mobile.svg" alt="Kanban Logo" class="logo-icon" />
+    <span class="logo-text">kanban</span>
+  </div>
+
+  <div class="sidebar__content">
+    <h4 class="sidebar__heading">All Boards ({{ boards.length }})</h4>
+    
+    <ul class="board-list">
+      <a *ngFor="let board of boards; let i = index" 
+          class="board-item" 
+           [routerLink]="['/boards',i]"
+            routerLinkActive="active">
+        <img src="assets/icon-board.svg" class="board-icon" alt="Board" />
+        <span class="board-name">{{ board.name }}</span>
+    </a>
+      
+      <li class="board-item board-item--create">
+        <img src="assets/icon-board.svg" class="board-icon purple-icon" alt="New Board" />
+        <span class="board-name">+ Create New Board</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="sidebar__footer">
+    <div class="theme-toggle">
+      <img src="assets/icon-light-theme.svg" alt="Light Theme" />
+      <div class="toggle-switch" (click)="toggleTheme()" [class.toggled]="isDarkMode">
+        <div class="toggle-circle"></div>
+      </div>
+      <img src="assets/icon-dark-theme.svg" alt="Dark Theme" />
+    </div>
+
+    <button class="hide-sidebar-btn">
+      <img src="assets/icon-hide-sidebar.svg" alt="Hide Sidebar" />
+      <span>Hide Sidebar</span>
+    </button>
+  </div>
+</aside>

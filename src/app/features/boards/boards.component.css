@@ -1,0 +1,26 @@
+.empty-boards-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 24px;
+}
+
+.empty-boards-content {
+  text-align: center;
+  max-width: 480px;
+}
+
+.empty-title {
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.empty-message {
+  margin-bottom: 32px;
+}
+
+.create-btn {
+  padding-left: 24px;
+  padding-right: 24px;
+}

@@ -1,0 +1,32 @@
+<div class="board-layout">
+  <!-- Columns Container -->
+   <div class="board-layout" *ngIf="currentBoard">
+    <div class="columns-container">
+    
+    <!-- Column: Todo -->
+    <div class="board-column" *ngFor="let column of currentBoard.columns">
+      <div class="column-header">
+        <div class="status-color" style="background-color: #49C4E5;"></div>
+        <h4 class="column-name">{{column.name}} ({{column.tasks.length}})</h4>
+      </div>
+      
+      <div class="task-list">  
+        <!-- Task Card -->
+        <div class="task-card" *ngFor="let task of column.tasks">
+          <h3 class="task-title">{{ task.title }}</h3>
+          <p class="task-subtasks">{{ task.subtasks.length }} subtasks</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- New Column Action -->
+    <div class="new-column-container">
+      <div class="new-column-btn">
+        <span>+ New Column</span>
+      </div>
+    </div>
+    
+  </div>
+   </div>
+  
+</div>

@@ -1,0 +1,112 @@
+.board-layout {
+  height: 100%;
+  padding: 24px;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.columns-container {
+  display: flex;
+  gap: 24px;
+  height: 100%;
+  padding-bottom: 24px; /* Space for scrollbar */
+}
+
+.board-column {
+  width: 280px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.column-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.status-color {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+}
+
+.column-name {
+  color: var(--text-secondary);
+}
+
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: auto;
+  padding-bottom: 20px;
+}
+
+.task-card {
+  background-color: var(--bg-card);
+  border-radius: 8px;
+  padding: 23px 16px;
+  box-shadow: 0px 4px 6px rgba(54, 78, 126, 0.1);
+  cursor: pointer;
+  transition: transform var(--transition-fast);
+}
+
+[data-theme="dark"] .task-card {
+  box-shadow: none;
+}
+
+.task-card:hover {
+  transform: translateY(-2px);
+}
+
+.task-card:hover .task-title {
+  color: var(--purple);
+}
+
+.task-title {
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  transition: color var(--transition-fast);
+}
+
+.task-subtasks {
+  font-weight: var(--fw-bold);
+}
+
+.new-column-container {
+  width: 280px;
+  flex-shrink: 0;
+  padding-top: 39px; /* Align with top of tasks */
+}
+
+.new-column-btn {
+  height: 100%;
+  background: linear-gradient(180deg, #E9EFFA 0%, rgba(233, 239, 250, 0.5) 100%);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+[data-theme="dark"] .new-column-btn {
+  background: linear-gradient(180deg, rgba(43, 44, 55, 0.25) 0%, rgba(43, 44, 55, 0.125) 100%);
+}
+
+.new-column-btn:hover {
+  color: var(--purple);
+}
+
+.new-column-btn span {
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-bold);
+  color: var(--text-secondary);
+  transition: color var(--transition-fast);
+}
+
+.new-column-btn:hover span {
+  color: var(--purple);
+}
