@@ -1,8 +1,10 @@
 # Kanban Task Management Web App - Forms & CRUD Lab
 
+link: https://kanbanfor.netlify.app/
+
 A professional Kanban application continuation, focusing on Reactive Forms, Data Persistence, and CRUD operations.
 
-## 🚀 Key Features Implemented
+## Key Features Implemented
 
 - **Reactive Forms:** Utilized `FormBuilder` and `FormGroup` for robust task management.
 - **Dynamic FormArrays:** Allowed users to dynamically add and remove subtasks.
@@ -12,7 +14,7 @@ A professional Kanban application continuation, focusing on Reactive Forms, Data
 
 ---
 
-## 📚 Advanced Form Concepts (Task 10 Discussion)
+##  Advanced Form Concepts (Task 10 Discussion)
 
 ### 1. Reactive Forms vs Template-Driven
 We chose **Reactive Forms** for this project because they are more scalable and predictable. Unlike template-driven forms, Reactive Forms are defined in TypeScript, making it easier to write unit tests for validation logic and manage complex data structures like nested arrays.
@@ -25,7 +27,7 @@ We implemented a **Synchronous Custom Validator** to prevent duplicate task titl
 
 ---
 
-## 🏁 Getting Started
+##  Getting Started
 1. Clone the repository
 2. Run `npm install`
 3. Run `ng serve`
