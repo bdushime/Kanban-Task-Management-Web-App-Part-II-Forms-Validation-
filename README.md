@@ -1,36 +1,32 @@
-# Kanban Task Management Web App - Angular Routing Lab
+# Kanban Task Management Web App - Forms & CRUD Lab
 
-A professional Kanban board application built with Angular, focusing on advanced routing, navigation, and state management.
+A professional Kanban application continuation, focusing on Reactive Forms, Data Persistence, and CRUD operations.
 
-Deployed link:
+## 🚀 Key Features Implemented
 
-##  Features
+- **Reactive Forms:** Utilized `FormBuilder` and `FormGroup` for robust task management.
+- **Dynamic FormArrays:** Allowed users to dynamically add and remove subtasks.
+- **Custom Validation:** Implemented a unique title validator to prevent duplicate tasks.
+- **LocalStorage Persistence:** Full CRUD operations (Create, Read, Update) saved to the browser.
+- **Contextual Routing:** Used route parameters (`:taskId`) to switch between "Add" and "Edit" modes.
 
-### 1. Advanced Angular Routing
-- **Dynamic Route Parameters:** Implemented `:id` parameters to dynamically load board data from a shared service.
-- **Wildcard Handling:** A dedicated `**` route catches undefined paths and redirects users to a custom 404 Not Found page.
+---
 
-### 2. Navigation & UX
-- **Declarative Navigation:** Uses `routerLink` for seamless SPA navigation without browser refreshes.
-- **Active State Tracking:** Utilizes `routerLinkActive` to provide visual feedback on the current active board.
-- **Programmatic Navigation:** Uses the `Router` service to navigate users via TypeScript logic (found in the Settings toggle).
-- **Query Parameters:** Supports optional query parameters (e.g., `?view=edit`) for advanced filtering and view modes.
+## 📚 Advanced Form Concepts (Task 10 Discussion)
 
-### 3. Security & Navigation Guards
-- **CanActivate Guard:** A custom `AuthGuard` protects board routes, ensuring only authenticated users can access private data.
-- **CanDeactivate Guard:** An `UnsavedChangesGuard` prevents data loss by warning users before they navigate away from a board with pending changes.
+### 1. Reactive Forms vs Template-Driven
+We chose **Reactive Forms** for this project because they are more scalable and predictable. Unlike template-driven forms, Reactive Forms are defined in TypeScript, making it easier to write unit tests for validation logic and manage complex data structures like nested arrays.
 
-### 4. Reactive State Management
-- **Centralized Service:** A `BoardService` acts as the single source of truth, managing application state and providing data to components via Dependency Injection.
+### 2. Dynamic Form Controls (FormArray)
+For the subtasks feature, we utilized `FormArray`. This is a powerful Angular feature that allows us to manage a variable number of form controls. It enables the "Add New Subtask" functionality, where the UI can grow or shrink based on user input while keeping the data model synchronized.
 
-##  Tech Stack
-- **Framework:** Angular 19 (Standalone Components)
-- **Styling:** Vanilla CSS (CSS Variables for Dark/Light Mode)
-- **Routing:** Angular Router (Lazy Loading, Functional Guards)
-- **State Management:** RxJS & Services
+### 3. Custom & Asynchronous Validation
+We implemented a **Synchronous Custom Validator** to prevent duplicate task titles. In a real-world app connected to a database, we would use an **Asynchronous Validator** to check the title uniqueness against a server API, ensuring data integrity across the entire application.
 
-##  Getting Started
+---
+
+## 🏁 Getting Started
 1. Clone the repository
 2. Run `npm install`
-3. Run `ng serve` to start the development server
+3. Run `ng serve`
 4. Navigate to `http://localhost:4200/`

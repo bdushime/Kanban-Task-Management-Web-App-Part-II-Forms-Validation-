@@ -1,0 +1,75 @@
+<div class="modal-overlay">
+  <div class="form-container">
+    <h2 class="form-title">{{ isEditMode ? 'Edit Task' : 'Add New Task' }}</h2>
+
+    <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+      <!-- Title -->
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input 
+          id="title" 
+          type="text" 
+          formControlName="title" 
+          placeholder="e.g. Take coffee break"
+          [class.invalid]="taskForm.get('title')?.invalid && taskForm.get('title')?.touched"
+        >
+        <small class="error-msg" *ngIf="taskForm.get('title')?.hasError('required') && taskForm.get('title')?.touched">
+          Title is required.
+        </small>
+        <small class="error-msg" *ngIf="taskForm.get('title')?.hasError('duplicateTitle') && taskForm.get('title')?.touched">
+          This task title already exists!
+        </small>
+      </div>
+
+      <!-- Description -->
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea 
+          id="description" 
+          formControlName="description" 
+          placeholder="e.g. It's always good to take a break. This 15 minute break will recharge the batteries a bit."
+          rows="4"
+        ></textarea>
+      </div>
+
+      <!-- Subtasks -->
+      <div class="form-group">
+        <label>Subtasks</label>
+        <div formArrayName="subtasks">
+          <div *ngFor="let sub of subtasks.controls; let i=index" [formGroupName]="i" class="subtask-row">
+            <input type="text" formControlName="title" placeholder="e.g. Make coffee">
+            <button type="button" class="remove-btn" (click)="removeSubtask(i)">
+              <img src="assets/icon-cross.svg" alt="Remove">
+            </button>
+          </div>
+        </div>
+        <button type="button" class="btn btn--secondary btn--full" (click)="addSubtask()">
+          + Add New Subtask
+        </button>
+      </div>
+
+      <!-- Status -->
+      <div class="form-group">
+        <label for="status">Status</label>
+        <select id="status" formControlName="status">
+          <option *ngFor="let col of columns; let i=index" [value]="i">
+            {{ col.name }}
+          </option>
+        </select>
+      </div>
+
+      <!-- Actions -->
+      <div class="form-actions">
+        <button type="submit" class="btn btn--primary btn--full" [disabled]="taskForm.invalid">
+          {{ isEditMode ? 'Save Changes' : 'Create Task' }}
+        </button>
+        <button *ngIf="isEditMode" type="button" class="btn btn--destructive btn--full" (click)="onDelete()">
+          Delete Task
+        </button>
+        <button type="button" class="btn btn--secondary btn--full" (click)="onCancel()">
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

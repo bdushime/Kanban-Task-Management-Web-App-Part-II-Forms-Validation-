@@ -4,7 +4,10 @@
   </div>
   
   <div class="header__right">
-    <button class="btn btn--primary btn--large add-task-btn">
+    <button 
+      class="btn btn--primary btn--large add-task-btn" 
+      [routerLink]="['/boards', currentBoardId, 'tasks', 'new']"
+      [disabled]="!currentBoardId">
       + Add New Task
     </button>
     <button class="header__options-btn" (click)="goToSettings()">

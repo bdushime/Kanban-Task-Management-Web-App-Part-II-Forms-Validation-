@@ -1,0 +1,48 @@
+<div class="modal-overlay">
+  <div class="form-container">
+    <h2 class="form-title">Add New Board</h2>
+
+    <form [formGroup]="boardForm" (ngSubmit)="onSubmit()">
+      <!-- Board Name -->
+      <div class="form-group">
+        <label for="name">Board Name</label>
+        <input 
+          id="name" 
+          type="text" 
+          formControlName="name" 
+          placeholder="e.g. Web Design"
+          [class.invalid]="boardForm.get('name')?.invalid && boardForm.get('name')?.touched"
+        >
+        <small class="error-msg" *ngIf="boardForm.get('name')?.invalid && boardForm.get('name')?.touched">
+          Board name is required.
+        </small>
+      </div>
+
+      <!-- Columns -->
+      <div class="form-group">
+        <label>Board Columns</label>
+        <div formArrayName="columns">
+          <div *ngFor="let col of columns.controls; let i=index" class="column-row">
+            <input [formControlName]="i" type="text" placeholder="e.g. Done">
+            <button type="button" class="remove-btn" (click)="removeColumn(i)">
+              <img src="assets/icon-cross.svg" alt="Remove">
+            </button>
+          </div>
+        </div>
+        <button type="button" class="btn btn--secondary btn--full" (click)="addColumn()">
+          + Add New Column
+        </button>
+      </div>
+
+      <!-- Actions -->
+      <div class="form-actions">
+        <button type="submit" class="btn btn--primary btn--full" [disabled]="boardForm.invalid">
+          Create New Board
+        </button>
+        <button type="button" class="btn btn--secondary btn--full" (click)="onCancel()">
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

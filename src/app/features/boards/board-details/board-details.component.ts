@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import {CommonModule} from '@angular/common';
 import { OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, RouterOutlet, Router} from '@angular/router';
 import { BoardService } from '../../../services/board.service';
 import { Board } from '../../../models/board.model';
 @Component({
   selector: 'app-board-details',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterOutlet],
   templateUrl: './board-details.component.html',
   styleUrl: './board-details.component.css',
 })
@@ -14,7 +14,7 @@ export class BoardDetailsComponent implements OnInit {
  boardId: string | null = null;
  currentBoard: Board | undefined
 
- constructor(private route:ActivatedRoute,private boardService:BoardService){}
+ constructor(private route:ActivatedRoute,private boardService:BoardService, private router: Router){}
 
  ngOnInit(): void {
   this.route.paramMap.subscribe(params =>{
@@ -32,6 +32,15 @@ export class BoardDetailsComponent implements OnInit {
   });
  }
 
+ editTask(taskId: string | undefined) {
+    if (taskId) {
+      this.router.navigate(['tasks/edit', taskId], { relativeTo: this.route });
+    }
+  }
 
-
+  addNewColumn() {
+    if (this.boardId !== null) {
+      this.router.navigate(['/boards/edit', this.boardId]);
+    }
+  }
 }

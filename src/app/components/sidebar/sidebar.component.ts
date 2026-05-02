@@ -1,29 +1,23 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { RouterLink, RouterLinkActive, Router } from '@angular/router';
+import { BoardService } from '../../services/board.service';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [CommonModule,RouterLink,RouterLinkActive],
+  imports: [CommonModule, RouterLink, RouterLinkActive],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css'
 })
 export class SidebarComponent {
-  boards = [
-    { name: 'Platform Launch' },
-    { name: 'Marketing Plan' },
-    { name: 'Roadmap' }
-  ];
-  
+  constructor(public boardService: BoardService, private router: Router) {}
 
-  activeIndex = 0;
+  createNewBoard() {
+    this.router.navigate(['/boards/new']);
+  }
 
   isDarkMode = true;
-
-  selectBoard(index: number) {
-    this.activeIndex = index;
-  }
 
   toggleTheme() {
     this.isDarkMode = !this.isDarkMode;

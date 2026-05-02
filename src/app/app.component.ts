@@ -3,13 +3,13 @@ import { RouterOutlet, Router, NavigationStart, NavigationEnd, NavigationCancel,
 import { CommonModule } from '@angular/common';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HeaderComponent } from './components/header/header.component';
-import { BoardsComponent } from './features/boards/boards.component';
-
+import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
+import { ModalService } from './services/modal.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, SidebarComponent, HeaderComponent],
+  imports: [RouterOutlet, CommonModule, SidebarComponent, HeaderComponent, ConfirmationModalComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
@@ -18,7 +18,7 @@ export class AppComponent {
   isLoading = false;
 
   
-  constructor(private router: Router) {
+  constructor(private router: Router, public modalService: ModalService) {
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationStart) {
         this.isLoading = true; 

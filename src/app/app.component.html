@@ -17,3 +17,13 @@
     </main>
   </div>
 </div>
+
+<!-- Global Confirmation Modal -->
+<app-confirmation-modal
+  *ngIf="modalService.getModalState() | async as options"
+  [title]="options.title"
+  [message]="options.message"
+  [isDestructive]="options.isDestructive || false"
+  (onConfirm)="modalService.confirm()"
+  (onCancel)="modalService.cancel()"
+></app-confirmation-modal>

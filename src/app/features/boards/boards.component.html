@@ -2,8 +2,10 @@
   <div class="empty-boards-content">
     <h2 class="empty-title">Select a board from the sidebar to get started.</h2>
     <p class="empty-message">Or create a new board to begin tracking your tasks.</p>
-    <button class="btn btn--primary btn--large create-btn">
+    <button class="btn btn--primary btn--large create-btn" [routerLink]="['/boards/new']">
       + Add New Board
     </button>
   </div>
 </div>
+
+<router-outlet></router-outlet>
