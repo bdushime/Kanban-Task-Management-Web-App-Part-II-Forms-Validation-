@@ -54,6 +54,7 @@ export class TaskFormComponent implements OnInit {
         this.uniqueTitleValidator(this.existingTitles)
       ]],
       description: [''],
+      dueDate: [''],
       status: [0, Validators.required], 
       subtasks: this.fb.array([]) 
     });
@@ -93,6 +94,7 @@ export class TaskFormComponent implements OnInit {
     this.taskForm.patchValue({
       title: task.title,
       description: task.description,
+      dueDate: task.dueDate || '',
       status: columnIndex !== -1 ? columnIndex : 0
     });
 
@@ -107,6 +109,7 @@ export class TaskFormComponent implements OnInit {
       const taskData: Task = {
         title: formValue.title,
         description: formValue.description,
+        dueDate: formValue.dueDate,
         status: 'Todo', 
         subtasks: formValue.subtasks
       };
