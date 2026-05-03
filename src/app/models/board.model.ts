@@ -8,7 +8,7 @@ export interface Task {
   title: string;
   description: string;
   status: string;
-  dueDate?: string; // Add this!
+  dueDate?: string; 
   subtasks: Subtask[];
 }
 

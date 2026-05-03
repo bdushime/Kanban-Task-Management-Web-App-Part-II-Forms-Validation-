@@ -27,11 +27,11 @@ export class BoardService {
           tasks: col.tasks.map(task => ({ ...task, id: this.generateId() }))
         }))
       }));
-      this.saveToStorage();
+      this.saveToLocalStorage();
     }
   }
 
-  private saveToStorage(): void {
+  public saveToLocalStorage(): void {
     localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.boards));
   }
 
@@ -47,38 +47,6 @@ export class BoardService {
     return this.boards[id];
   }
 
-  getTaskById(boardId: number, taskId: string): Task | undefined {
-    const board = this.getBoardById(boardId);
-    if (!board) return undefined;
-    for (const column of board.columns) {
-      const task = column.tasks.find(t => t.id === taskId);
-      if (task) return task;
-    }
-    return undefined;
-  }
-
-  addTask(boardId: number, columnId: number, task: Task) {
-    const newTask = { ...task, id: this.generateId() };
-    this.boards[boardId].columns[columnId].tasks.push(newTask);
-    this.saveToStorage();
-  }
-
-  updateTask(boardId: number, columnId: number, taskId: string, updatedTask: Task) {
-    const col = this.boards[boardId].columns[columnId];
-    const index = col.tasks.findIndex(t => t.id === taskId);
-    if (index !== -1) {
-      col.tasks[index] = { ...updatedTask, id: taskId };
-      this.saveToStorage();
-    }
-  }
-
-  deleteTask(boardId: number, columnId: number, taskId: string) {
-    const col = this.boards[boardId].columns[columnId];
-    col.tasks = col.tasks.filter(t => t.id !== taskId);
-    this.saveToStorage();
-  }
-
-  // --- Board CRUD ---
   addBoard(name: string) {
     const newBoard: Board = {
       name: name,
@@ -88,18 +56,17 @@ export class BoardService {
       ]
     };
     this.boards.push(newBoard);
-    this.saveToStorage();
-    return this.boards.length - 1; // Return new index
+    this.saveToLocalStorage();
+    return this.boards.length - 1;
   }
 
   deleteBoard(boardId: number) {
     this.boards.splice(boardId, 1);
-    this.saveToStorage();
+    this.saveToLocalStorage();
   }
 
-  // --- Column CRUD ---
   addColumn(boardId: number, name: string) {
     this.boards[boardId].columns.push({ name: name, tasks: [] });
-    this.saveToStorage();
+    this.saveToLocalStorage();
   }
 }
