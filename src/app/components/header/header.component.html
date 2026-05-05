@@ -10,8 +10,17 @@
       [disabled]="!currentBoardId">
       + Add New Task
     </button>
-    <button class="header__options-btn" (click)="goToSettings()">
-      <img src="assets/icon-vertical-ellipsis.svg" alt="Options" />
-    </button>
+    
+    <div class="options-container">
+      <button class="header__options-btn" (click)="toggleMenu($event)">
+        <img src="assets/icon-vertical-ellipsis.svg" alt="Options" />
+      </button>
+
+      <!-- Floating Menu -->
+      <div class="options-menu" *ngIf="isMenuOpen" (click)="$event.stopPropagation()">
+        <button (click)="onEditBoard()">Edit Board</button>
+        <button class="destructive" (click)="onDeleteBoard()">Delete Board</button>
+      </div>
+    </div>
   </div>
 </header>

@@ -39,7 +39,7 @@
   font-size: 12px;
   font-weight: bold;
   margin-bottom: 8px;
-  color: var(--text-primary);
+  color: var(--text-secondary);
 }
 
 .form-group input {
@@ -51,6 +51,7 @@
   color: var(--text-primary);
   font-family: inherit;
   font-size: 13px;
+  transition: border-color var(--transition-fast);
 }
 
 .form-group input:focus {
@@ -74,6 +75,8 @@
   border: none;
   cursor: pointer;
   padding: 0;
+  display: flex;
+  align-items: center;
 }
 
 .btn--full {
@@ -84,6 +87,7 @@
 .btn--secondary {
   background-color: rgba(99, 95, 199, 0.1);
   color: var(--purple);
+  margin-top: 12px;
 }
 
 .btn--secondary:hover {
@@ -93,5 +97,6 @@
 .form-actions {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
+  margin-top: 24px;
 }

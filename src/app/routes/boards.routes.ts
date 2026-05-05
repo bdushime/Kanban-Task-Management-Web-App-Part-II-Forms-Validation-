@@ -28,6 +28,10 @@ export const BOARDS_ROUTES: Routes = [
         loadComponent: () => import('../features/tasks/task-form/task-form.component').then(m => m.TaskFormComponent)
       },
       {
+        path: 'tasks/:taskId',
+        loadComponent: () => import('../features/boards/task-detail/task-detail.component').then(m => m.TaskDetailComponent)
+      },
+      {
         path: 'tasks/edit/:taskId',
         loadComponent: () => import('../features/tasks/task-form/task-form.component').then(m => m.TaskFormComponent)
       },

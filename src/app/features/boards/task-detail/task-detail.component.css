@@ -24,9 +24,43 @@
 .modal-header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   gap: 24px;
   margin-bottom: 24px;
+  position: relative;
+}
+
+.options-menu {
+  position: absolute;
+  top: 45px;
+  right: -60px;
+  background-color: var(--bg-card);
+  box-shadow: 0 10px 20px rgba(54, 78, 126, 0.25);
+  padding: 16px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 160px;
+  z-index: 1001;
+}
+
+.options-menu button {
+  background: none;
+  border: none;
+  text-align: left;
+  font-size: 13px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 0;
+}
+
+.options-menu button.destructive {
+  color: var(--red);
+}
+
+.options-menu button:hover {
+  text-decoration: underline;
 }
 
 .task-title {
@@ -42,7 +76,13 @@
   margin-bottom: 24px;
 }
 
-.subtasks-heading {
+.subtasks-heading,
+.status-heading {
+  font-size: 12px;
+  font-weight: var(--fw-bold);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 2.4px;
   margin-bottom: 16px;
 }
 
@@ -62,6 +102,11 @@
   gap: 16px;
   cursor: pointer;
   transition: background-color var(--transition-fast);
+  margin-bottom: 8px;
+}
+
+.subtask-item:last-child {
+  margin-bottom: 0;
 }
 
 .subtask-item:hover {
@@ -124,11 +169,19 @@
 
 .status-select {
   width: 100%;
+  padding: 8px 16px;
+  border: 1px solid rgba(130, 143, 163, 0.25);
+  border-radius: 4px;
+  background-color: transparent;
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 13px;
   appearance: none;
   cursor: pointer;
   background-image: url("data:image/svg+xml,%3Csvg width='11' height='8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%23635FC7' stroke-width='2' fill='none' d='m1 1 4 4 4-4'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 16px center;
+  transition: border-color var(--transition-fast);
 }
 
 .status-select:focus {

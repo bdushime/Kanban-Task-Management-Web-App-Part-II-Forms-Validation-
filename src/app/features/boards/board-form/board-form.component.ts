@@ -51,8 +51,7 @@ export class BoardFormComponent implements OnInit {
       const board = this.boardService.getBoardById(newBoardIndex);
       if (board) {
         board.columns = columns.map((colName: string) => ({ name: colName, tasks: [] }));
-        // Save back to storage
-        localStorage.setItem('kanban_data', JSON.stringify(this.boardService.getBoards()));
+        this.boardService.saveToLocalStorage();
       }
 
       this.router.navigate(['/boards', newBoardIndex]);

@@ -1,43 +1,51 @@
-<div class="task-detail-overlay">
-  <div class="task-detail-modal">
+<div class="task-detail-overlay" (click)="closeModal()" *ngIf="task">
+  <div class="task-detail-modal" (click)="$event.stopPropagation()">
     
     <div class="modal-header">
-      <h2 class="task-title">Research pricing points of various competitors and trial different business models</h2>
-      <button class="options-btn">
+      <h2 class="task-title">{{ task.title }}</h2>
+      <button class="options-btn" (click)="toggleMenu($event)">
         <img src="assets/icon-vertical-ellipsis.svg" alt="Options">
       </button>
+
+      <!-- Floating Menu -->
+      <div class="options-menu" *ngIf="isMenuOpen" (click)="$event.stopPropagation()">
+        <button (click)="onEditClick()">Edit Task</button>
+        <button class="destructive" (click)="onDeleteClick()">Delete Task</button>
+      </div>
     </div>
     
     <p class="task-description">
-      We know what we're planning to build for version one. Now we need to finalise the first pricing model we'll use. Keep iterating the subtasks until we have a coherent proposition.
+      {{ task.description || 'No description provided.' }}
     </p>
     
     <div class="subtasks-section">
-      <h4 class="subtasks-heading">Subtasks (2 of 3)</h4>
+      <h4 class="subtasks-heading">
+        Subtasks ({{ completedSubtasksCount }} of {{ task.subtasks.length }})
+      </h4>
       
-      <label class="subtask-item completed">
-        <input type="checkbox" checked>
-        <span class="subtask-title">Research competitor pricing and business models</span>
-      </label>
-      
-      <label class="subtask-item completed">
-        <input type="checkbox" checked>
-        <span class="subtask-title">Outline a business model that works for our solution</span>
-      </label>
-      
-      <label class="subtask-item">
-        <input type="checkbox">
-        <span class="subtask-title">Talk to potential customers about our proposed solution and ask for fair price expectancy</span>
-      </label>
+      <div class="subtask-list">
+        <label 
+          class="subtask-item" 
+          *ngFor="let sub of task.subtasks; let i = index"
+          [class.completed]="sub.isCompleted"
+        >
+          <input 
+            type="checkbox" 
+            [checked]="sub.isCompleted"
+            (change)="toggleSubtask(i)"
+          >
+          <span class="subtask-title">{{ sub.title }}</span>
+        </label>
+      </div>
     </div>
     
     <div class="status-section">
       <h4 class="status-heading">Current Status</h4>
       <div class="status-select-container">
-        <select class="status-select">
-          <option>Todo</option>
-          <option selected>Doing</option>
-          <option>Done</option>
+        <select class="status-select" (change)="onStatusChange($event)">
+          <option *ngFor="let col of columns; let i = index" [value]="i" [selected]="i === currentColumnIndex">
+            {{ col.name }}
+          </option>
         </select>
       </div>
     </div>

@@ -1,0 +1,65 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-modal);
+  padding: 16px;
+}
+
+.modal-content {
+  background-color: var(--bg-card);
+  width: 100%;
+  max-width: 480px;
+  border-radius: 6px;
+  padding: 32px;
+}
+
+.modal-title {
+  font-size: var(--fs-l);
+  margin-bottom: 24px;
+}
+
+.modal-title.destructive {
+  color: var(--red);
+}
+
+.modal-message {
+  color: var(--text-secondary);
+  font-size: var(--fs-m);
+  line-height: 23px;
+  margin-bottom: 24px;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 16px;
+}
+
+.modal-actions .btn {
+  flex: 1;
+}
+
+/* Specific Figma Button Styles if not in global */
+.btn--secondary {
+  background-color: #FFFFFF;
+  color: var(--purple);
+}
+
+[data-theme="dark"] .btn--secondary {
+  background-color: #FFFFFF;
+}
+
+.btn--destructive {
+  background-color: var(--red);
+  color: #FFFFFF;
+}
+
+.btn--destructive:hover {
+  background-color: var(--red-light);
+}

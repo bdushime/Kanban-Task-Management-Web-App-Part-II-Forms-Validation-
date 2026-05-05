@@ -32,7 +32,13 @@ export class BoardDetailsComponent implements OnInit {
   });
  }
 
- editTask(taskId: string | undefined) {
+  viewTask(taskId: string | undefined) {
+    if (taskId) {
+      this.router.navigate(['tasks', taskId], { relativeTo: this.route });
+    }
+  }
+
+  editTask(taskId: string | undefined) {
     if (taskId) {
       this.router.navigate(['tasks/edit', taskId], { relativeTo: this.route });
     }

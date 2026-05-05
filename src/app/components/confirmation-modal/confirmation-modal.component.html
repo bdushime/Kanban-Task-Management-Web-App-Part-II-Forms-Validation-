@@ -1,0 +1,27 @@
+<div class="modal-overlay" *ngIf="modalService.getModalState() | async as options" (click)="onCancel()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <h2 class="modal-title" [class.destructive]="options.isDestructive">
+      {{ options.title }}
+    </h2>
+    
+    <p class="modal-message">
+      {{ options.message }}
+    </p>
+
+    <div class="modal-actions">
+      <button 
+        class="btn btn--destructive btn--full" 
+        (click)="onConfirm()"
+      >
+        Delete
+      </button>
+      
+      <button 
+        class="btn btn--secondary btn--full" 
+        (click)="onCancel()"
+      >
+        Cancel
+      </button>
+    </div>
+  </div>
+</div>

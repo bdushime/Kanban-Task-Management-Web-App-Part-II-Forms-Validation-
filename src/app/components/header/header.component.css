@@ -29,4 +29,42 @@
   background: transparent;
   padding: 8px 16px;
   margin-right: -16px;
+  cursor: pointer;
+}
+
+.options-container {
+  position: relative;
+}
+
+.options-menu {
+  position: absolute;
+  top: 45px;
+  right: 0;
+  background-color: var(--bg-card);
+  box-shadow: 0 10px 20px rgba(54, 78, 126, 0.25);
+  padding: 16px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 160px;
+  z-index: 1001;
+}
+
+.options-menu button {
+  background: none;
+  border: none;
+  text-align: left;
+  font-size: 13px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 0;
+}
+
+.options-menu button.destructive {
+  color: var(--red);
+}
+
+.options-menu button:hover {
+  text-decoration: underline;
 }

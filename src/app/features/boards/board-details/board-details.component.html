@@ -12,7 +12,7 @@
       
       <div class="task-list">  
         <!-- Task Card -->
-        <div class="task-card" *ngFor="let task of column.tasks" (click)="editTask(task.id)" style="cursor: pointer;">
+        <div class="task-card" *ngFor="let task of column.tasks" (click)="viewTask(task.id)" style="cursor: pointer;">
           <h3 class="task-title">{{ task.title }}</h3>
           <p class="task-subtasks">{{ task.subtasks.length }} subtasks</p>
         </div>
